@@ -12,6 +12,7 @@ describe("Using Options in Cypress Actions", () => {
     cy.visit("https://tredgate.com/pmtool");
     cy.get("#username").type(userData.username, {
       delay: 2000, // 2000 ms = 2 sekundy mezi jednotlivými úhozy kláves);
+    });
+    cy.get(".btn").click("topLeft", { force: true });
   });
-   cy.get(".btn").click("topLeft", { force: true });
 });
