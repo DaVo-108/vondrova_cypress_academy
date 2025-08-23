@@ -24,10 +24,8 @@ describe("Chai Tests (Tests assertions)", () => {
   });
 
   it("Exercise - Email input in lost password page have value", () => {
-    new LoginPage().clickPasswordForgotten();
-    cy.get('input[placeholder="Email"]')
-      .type("email")
-      .should("have.value", "email");
+    new LoginPage().clickPasswordForgotten().typeEmail("email");
+    cy.get('input[placeholder="Email"]').should("have.value", "email");
   });
 
   it("Password input has form-control class", () => {
@@ -35,7 +33,7 @@ describe("Chai Tests (Tests assertions)", () => {
   });
 
   it("Exercise - Login button has btn-info class", () => {
-    cy.get('[type="submit"]').should("have.class", "btn-info");
+    cy.get('button[type="submit"]').should("have.class", "btn-info");
   });
 
   it("Login button is visible", () => {
@@ -69,5 +67,10 @@ describe("Chai Tests (Tests assertions)", () => {
   it("Alert not exist after Pmtool opened", () => {
     cy.get("#username").should("be.visible");
     cy.get(".alert-danger").should("not.exist");
+  });
+
+  it("Pmtool title is visible", () => {
+    new LoginPage().login("cypress_zima_2024", "Zima2024Cypress");
+    cy.get(".navbar-brand").should("be.visible");
   });
 });
