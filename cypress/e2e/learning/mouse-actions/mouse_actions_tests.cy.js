@@ -23,4 +23,14 @@ describe("Mousee Actions Tests", () => {
       .trigger("mousemove")
       .trigger("mouseup", { forse: true });
   });
+
+  it("Real Hover Test", () => {
+    cy.visit("https://tredgate.com/webtrain/web-actions.html");
+    cy.get('[data-testid="hover-box"]')
+      .realHover()
+      .then(() => {
+        cy.wait(2000);
+        cy.get('[data-testid="hover-message"]').should("be.visible");
+      });
+  });
 });
