@@ -1,3 +1,5 @@
+import { HomePageEshop } from "./hw_homepage_eshop";
+
 export class HeaderEshop {
   constructor() {
     this.url = "https://tredgate.com/eshop/";
@@ -7,8 +9,9 @@ export class HeaderEshop {
     cy.visit(this.url);
     return this;
   }
+
   clickLogo() {
-    cy.get(this.logo).click();
-    return this;
+    cy.get(this.logo).should("be.visible").click();
+    return new HomePageEshop();
   }
 }
