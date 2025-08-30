@@ -35,7 +35,7 @@ describe("Forms tests", () => {
     cy.get("#gender").should("have.value", "female");
   });
 
-  it("Submit form", () => {
+  it.only("Submit form", () => {
     cy.get("#name").clear().type("Daniela");
     cy.get("#email").clear().type("test@test.cz");
     cy.get("#phone").clear().type("123456789");
@@ -50,7 +50,7 @@ describe("Forms tests", () => {
       .and("contain.text", "Registration successful!");
   });
 
-  it.only("Upload file fixtures", () => {
+  it("Upload file fixtures", () => {
     cy.fixture("test.txt").as("uploadFile");
     cy.get("#file-upload").selectFile("@uploadFile");
   });
