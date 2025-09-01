@@ -6,5 +6,6 @@ export class BasePage {
 
   visit() {
     cy.visit(this.baseURL + this.path);
+    return this;
   }
 }
