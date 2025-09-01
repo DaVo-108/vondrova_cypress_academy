@@ -11,20 +11,20 @@ describe("Users Page Atomic Tests", () => {
 
   context("Title Tests", () => {
     it("Title Users is visible", () => {
-      cy.get(usersPage.pageTitleHeader).should("be.visible");
+      usersPage.pageTitleHeader.isVisible();
     });
 
     it("Title have Text", () => {
-      cy.get(usersPage.pageTitleHeader).should("have.text", "Users");
+      usersPage.pageTitleHeader.haveText("Users");
     });
 
     context("Add User Button Tests", () => {
       it("Add User Button is Visible", () => {
-        cy.get(usersPage.addUserButton).should("be.visible");
+        usersPage.addUserButton.isVisible();
       });
 
       it("Add User Button have Text", () => {
-        cy.get(usersPage.addUserButton).should("have.text", "Add User");
+        usersPage.addUserButton.haveText("Add User");
       });
     });
   });
