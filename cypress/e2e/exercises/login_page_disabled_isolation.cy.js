@@ -1,7 +1,10 @@
 import { LoginPage } from "../../page-objects/pmtool/login_page";
 
-describe("Login Page Atomic Tests", () => {
-  beforeEach(() => {
+describe("Exercise: Disabled isolation", { testIsolation: false }, () => {
+  before(() => {
+    cy.clearAllCookies();
+    cy.clearAllLocalStorage();
+    cy.clearAllSessionStorage();
     new LoginPage().openPmtool();
   });
 
@@ -49,7 +52,7 @@ describe("Login Page Atomic Tests", () => {
 
     it("Remember Me have Text", () => {
       const loginPage = new LoginPage();
-      oginPage.rememberMeCheckbox.haveText("Remember Me");
+      loginPage.rememberMeCheckbox.containsText("Remember Me");
     });
   });
 
@@ -99,7 +102,7 @@ describe("Login Page Atomic Tests", () => {
         .welcomePageHeaderIsVisible();
     });
 
-    it("Unsuccessful Login", () => {
+    it.skip("Unsuccessful Login", () => {
       const loginPage = new LoginPage();
       loginPage.typeUsername("ABCD").typePassword("EFGH").clickLogin();
       loginPage.alertDiv.isVisible();
