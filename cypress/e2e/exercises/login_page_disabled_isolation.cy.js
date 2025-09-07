@@ -22,6 +22,7 @@ describe("Exercise: Disabled isolation", { testIsolation: false }, () => {
     it("Username have value after type", () => {
       const loginPage = new LoginPage();
       loginPage.usernameInput.type("Test").haveValue("Test");
+      cy.get("#username").clear();
     });
   });
 

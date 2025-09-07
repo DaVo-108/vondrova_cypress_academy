@@ -5,7 +5,11 @@ describe("Users Page Atomic Tests", () => {
   const usersPage = new UsersPage();
 
   beforeEach(() => {
-    new LoginPage().openPmtool().login("cypress_zima_2024", "Zima2024Cypress");
+    new LoginPage()
+      .openPmtool()
+      .typeUsername(Cypress.env("pmtool_username"))
+      .typePassword(Cypress.env("pmtool_password"))
+      .clickLogin();
     new UsersPage().visit();
   });
 
