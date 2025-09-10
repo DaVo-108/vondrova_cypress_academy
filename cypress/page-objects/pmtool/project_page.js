@@ -1,5 +1,5 @@
 import { HeaderSection } from "./common/header_section";
-import { CreateNewProjectModal } from "./create_project_modal";
+import { CreateNewProjectModal } from "./create_new_project_modal";
 
 export class ProjectPage extends HeaderSection {
   constructor() {
