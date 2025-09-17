@@ -1,0 +1,30 @@
+// import { LoginPage } from "../../../page-objects/pmtool/login_page";
+import { faker } from "@faker-js/faker";
+
+// cypress/e2e/learning/cypress-hacks
+describe("Multi Domain Test", () => {
+  it("cy.origin Test", () => {
+    cy.visit("https://tredgate.com/pmtool");
+    cy.get("#username").type("TEST");
+    cy.origin("https://tegb-frontend-88542200c6db.herokuapp.com/", () => {
+      cy.visit("/");
+      cy.get('[data-testid="username-input"]').type("Druhá doména");
+    });
+  });
+
+  it("Using imports in cy.origin", () => {
+    cy.visit("https://tegb-frontend-88542200c6db.herokuapp.com/");
+    cy.get('[data-testid="username-input"]').type("První doména");
+
+    cy.origin("https://tredgate.com/pmtool", () => {
+      cy.visit("/");
+      const fakerModule = Cypress.require("@faker-js/faker");
+      const faker = fakerModule.faker;
+      cy.get("#username").type(faker.internet.username());
+      cy.get(".btn").click();
+    });
+  });
+});
+
+// ! cy.origin nepodporuje používání externích souborů (PageObjects, npm balíčky jako je moment nebo faker) - někdy nám pomůže přímo Cypress.require, ale není to na 100 %
+// ? Dokumentace: https://docs.cypress.io/api/cypress-api/require
