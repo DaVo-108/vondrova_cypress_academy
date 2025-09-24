@@ -23,3 +23,20 @@
 //
 // -- This will overwrite an existing command --
 // Cypress.Commands.overwrite('visit', (originalFn, url, options) => { ... })
+
+Cypress.Commands.add("waitWith", (milliseconds, reason) => {
+  cy.wait(milliseconds);
+  cy.log(`Waited for ${milliseconds} ms. Reason: ${reason}`);
+});
+
+Cypress.Commands.add(
+  "typeSlowly",
+  { prevSubject: "element" },
+  (selector, text, delay = 100) => {
+    const { customElement } = require("../helpers/custom_element.js");
+    customElement(selector).get().type(text, { delay, log: false });
+    cy.log(
+      `Typed text "${text}" into element ${selector} with delay ${delay} ms`
+    );
+  }
+);

@@ -20,6 +20,7 @@ export class UserApi {
 
   login(username, password) {
     return cy.request({
+      //
       method: "POST",
       url: this.apiUrl + "auth/login",
       body: {
