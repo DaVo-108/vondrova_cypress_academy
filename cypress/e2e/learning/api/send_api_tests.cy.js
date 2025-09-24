@@ -42,7 +42,7 @@ describe("Send API Tests", () => {
     });
   });
 
-  it.only("Login with API Object", () => {
+  it("Login with API Object", () => {
     new UserApi()
       .login(Cypress.env("tegb_username"), Cypress.env("tegb_password"))
       .then((response) => {
