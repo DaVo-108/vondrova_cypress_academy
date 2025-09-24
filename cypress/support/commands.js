@@ -40,3 +40,12 @@ Cypress.Commands.add(
     );
   }
 );
+
+Cypress.Commands.add("openTegbAndSetLanguage", () => {
+  const { LoginPage } = require("../page-objects/tegb-cert/login_page.js");
+  const { currentLanguage } = require("./i18n/i18n.js");
+  const loginPage = new LoginPage();
+  loginPage.open();
+  loginPage.switchLanguage(currentLanguage);
+  cy.log(`Switched TEGB to '${currentLanguage}' language`);
+});
