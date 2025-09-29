@@ -9,7 +9,7 @@ describe("Chai Tests (Tests assertions)", () => {
     cy.get(".form-title").should("have.text", "Login");
   });
 
-  it.skip("Failing: Login header has text 'Login2", () => {
+  it("Failing: Login header has text 'Login2", () => {
     cy.get(".form-title").should("have.text", "Login2");
   });
 
